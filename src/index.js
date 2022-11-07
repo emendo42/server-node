@@ -12,7 +12,7 @@ import { notFound, errorHandler } from './utils/errors'
 
 const port = Number(process.env.PORT)
 
-const app = express() 
+const app = express()
 
 app.use(
   basicAuth({
