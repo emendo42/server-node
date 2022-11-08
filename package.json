@@ -1,8 +1,8 @@
 {
-  "name": "server-node-2",
+  "name": "server",
   "version": "1.0.0",
-  "description": "Basic REST API Server",
-  "main": "src/index.js",
+  "description": "",
+  "main": "dist/index.js",
   "scripts": {
     "build": "./node_modules/.bin/babel ./src --out-dir ./build",
     "postbuild": "prisma generate",
@@ -10,7 +10,8 @@
     "dev": "nodemon --exec npx babel-node src/index.js",
     "lint": "eslint ."
   },
-  "author": "Erick Mendoza <erickmendoza0960@gmail.com>",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.19.3",
@@ -38,16 +39,6 @@
     "express-basic-auth": "^1.2.1",
     "helmet": "^6.0.0",
     "morgan": "^1.10.0",
-    "pino": "^8.7.0",
-    "pino-pretty": "^9.1.1",
     "uuid": "^9.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/emendo42/server-node.git"
-  },
-  "bugs": {
-    "url": "https://github.com/emendo42/server-node/issues"
-  },
-  "homepage": "https://github.com/emendo42/server-node#readme"
+  }
 }
