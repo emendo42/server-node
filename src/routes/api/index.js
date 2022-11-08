@@ -10,6 +10,6 @@ router.get('/', (req, res) => {
 })
 
 router.use('/persons', persons)
-router.use('./companies', companies)
+router.use('/companies', companies)
 
 export default router
