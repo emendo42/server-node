@@ -4,14 +4,22 @@ import {
   getEmployee,
   getEmployees,
   addEmployee,
-  updateEmloyee,
+  updateEmployee,
   deleteEmployee,
 } from '../../models/employees'
 
 const router = Router()
 
 router.get('/', async (req, res) => {
-  const employees = await getEmployees()
+  const size = Number(req.query.size) || 10
+  const page = Number(req.query.page) || 1
+  const skip = size * (page - 1)
+  const take = size
+  const { count, employees } = await getEmployees(skip, take)
+  res.set({
+    'X-Total-Count': count,
+    'X-Total-Pages': Math.ceil(count / size),
+  })
   res.send(employees)
 })
 
@@ -20,7 +28,7 @@ router.get('/:id', async (req, res) => {
   if (employee) {
     res.send(employee)
   } else {
-    res.status(404).send({ msg: 'Emmployee not found' })
+    res.status(404).send({ msg: 'Employee not found' })
   }
 })
 
@@ -30,7 +38,7 @@ router.post('/', async (req, res) => {
 })
 
 router.put('/:id', async (req, res) => {
-  const employee = await updateEmloyee(req.params.id, req.body)
+  const employee = await updateEmployee(req.params.id, req.body)
   if (employee) {
     res.send(employee)
   } else {
