@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Company {
-  companyId   String      @id @default(uuid())
+  companyId   String       @id @default(uuid())
   name        String
   departments Department[]
   createdAt   DateTime     @default(now())
